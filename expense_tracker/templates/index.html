@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 30%;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            color: red;
+            text-decoration: none;
+        }
+
+        .chart-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>💰 Expense Tracker</h2>
+
+    <form method="POST">
+        <input name="amount" placeholder="Amount" required>
+        <input name="category" placeholder="Category" required>
+        <input name="date" placeholder="YYYY-MM-DD" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            
+                
+<td>
+    <a href="/edit/{{row[0]}}" 
+       style="background:#28a745; color:white; padding:5px 10px; border-radius:5px; text-decoration:none;">
+       Edit
+    </a>
+
+    <a href="/delete/{{row[0]}}" 
+       style="background:red; color:white; padding:5px 10px; border-radius:5px; text-decoration:none; margin-left:5px;">
+       Delete
+    </a>
+</td>
+        
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a class="chart-link" href="/chart">📊 View Chart</a>
+    <div style="text-align: right;">
+    <a href="/logout" style="color:red; text-decoration:none;">Logout</a>
+</div>
+
+</div>
+
+</body>
+</html>
