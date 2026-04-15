@@ -12,3 +12,5 @@ A Flask-based web application to track expenses with login authentication and da
 - SQLite
 - HTML/CSS
 - Matplotlib
+## 🌍 Live Demo
+https://expense-tracker-bmzc.onrender.com
